@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - Eco Marketplace</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #2e7d32;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .container {
+            padding: 40px;
+            text-align: center;
+        }
+        .welcome {
+            background: #e8f5e9;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>🌾 Eco Digital Marketplace</h1>
+        <div>
+            <span>Welcome, {{ user.username }}!</span>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="welcome">
+            <h2>Welcome to Eco Digital Marketplace!</h2>
+            <p>Your role: <strong>{{ user.role|upper }}</strong></p>
+            <p>Location: {{ user.location }}</p>
+            <p>We're still building more features...</p>
+        </div>
+    </div>
+</body>
+</html>
