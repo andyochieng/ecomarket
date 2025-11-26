@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f5f5;
+            padding-bottom: 80px;
+        }
+        .header {
+            background: #7cb342;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .profile-container {
+            padding: 20px;
+        }
+        .profile-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .profile-item {
+            margin: 15px 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .profile-item:last-child {
+            border-bottom: none;
+        }
+        .label {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .value {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .logout-btn {
+            background: #d32f2f;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>My Profile</h1>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-item">
+                <div class="label">Username</div>
+                <div class="value">{{ user.username }}</div>
+            </div>
+            <div class="profile-item">
+                <div class="label">Email</div>
+                <div class="value">{{ user.email }}</div>
+            </div>
+            <div class="profile-item">
+                <div class="label">Phone Number</div>
+                <div class="value">{{ user.phone_number }}</div>
+            </div>
+            <div class="profile-item">
+                <div class="label">Location</div>
+                <div class="value">{{ user.location }}</div>
+            </div>
+            <div class="profile-item">
+                <div class="label">Role</div>
+                <div class="value">{{ user.get_role_display }}</div>
+            </div>
+        </div>
+
+        <a href="{% url 'logout' %}">
+            <button class="logout-btn">Logout</button>
+        </a>
+    </div>
+</body>
+</html>

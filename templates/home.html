@@ -1,58 +1,353 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home - Eco Marketplace</title>
+    <title>EAC Market - Farm to Table Marketplace</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        .navbar {
-            background-color: #2e7d32;
-            padding: 15px;
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #7cb342 0%, #558b2f 100%);
             color: white;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .navbar h1 {
-            margin: 0;
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
         }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
+        
+        .logo span {
+            margin-left: 10px;
         }
-        .container {
-            padding: 40px;
+        
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, #c5e1a5, #f1f8e9);
+            padding: 30px 20px;
             text-align: center;
         }
-        .welcome {
-            background: #e8f5e9;
-            padding: 30px;
+        
+        .hero h1 {
+            color: #558b2f;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .hero p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            padding: 20px;
+            background: white;
+        }
+        
+        .search-box {
+            display: flex;
+            border: 2px solid #7cb342;
+            border-radius: 25px;
+            overflow: hidden;
+            background: white;
+        }
+        
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 12px 20px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .search-box button {
+            background: #7cb342;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        /* Categories */
+        .categories {
+            padding: 20px;
+            background: white;
+            margin-bottom: 10px;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .category-item {
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: #f1f8e9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 30px;
+            border: 2px solid #7cb342;
+        }
+        
+        .category-item:hover .category-icon {
+            background: #7cb342;
+            transform: scale(1.1);
+            transition: all 0.3s;
+        }
+        
+        .category-name {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        /* Featured Products */
+        .featured-section {
+            padding: 20px;
+            background: white;
+            margin-bottom: 80px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .section-header h2 {
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .view-all {
+            color: #7cb342;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .product-card {
+            background: white;
             border-radius: 10px;
-            margin: 20px auto;
-            max-width: 600px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: #333;
+            position: relative;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .verified-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #7cb342;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .product-info {
+            padding: 12px;
+        }
+        
+        .product-name {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .product-price {
+            color: #7cb342;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .product-seller {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            text-align: center;
+            text-decoration: none;
+            color: #666;
+            flex: 1;
+        }
+        
+        .nav-item.active {
+            color: #7cb342;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-label {
+            font-size: 11px;
+        }
+        
+        @media (max-width: 480px) {
+            .category-grid {
+                gap: 10px;
+            }
+            
+            .category-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <h1>🌾 Eco Digital Marketplace</h1>
-        <div>
-            <span>Welcome, {{ user.username }}!</span>
-            <a href="{% url 'logout' %}">Logout</a>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <span>🌿</span>
+            <span>EAC Market</span>
+        </div>
+        <div class="menu-icon">☰</div>
+    </div>
+    
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Farm to Table Marketplace</h1>
+        <p>Connect directly with local farmers and buyers</p>
+    </div>
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+        <form method="GET" action="{% url 'search' %}">
+            <div class="search-box">
+                <input type="text" name="q" placeholder="Search for products, farmers...">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Categories -->
+    <div class="categories">
+        <div class="category-grid">
+            {% for category in categories %}
+            <a href="{% url 'category_products' category.id %}" class="category-item">
+                <div class="category-icon">{{ category.icon }}</div>
+                <div class="category-name">{{ category.name }}</div>
+            </a>
+            {% endfor %}
         </div>
     </div>
     
-    <div class="container">
-        <div class="welcome">
-            <h2>Welcome to Eco Digital Marketplace!</h2>
-            <p>Your role: <strong>{{ user.role|upper }}</strong></p>
-            <p>Location: {{ user.location }}</p>
-            <p>We're still building more features...</p>
+    <!-- Featured Products -->
+    <div class="featured-section">
+        <div class="section-header">
+            <h2>Featured Products</h2>
+            <a href="{% url 'all_products' %}" class="view-all">View All →</a>
         </div>
+        
+        <div class="products-grid">
+            {% for product in featured_products %}
+            <a href="{% url 'product_detail' product.id %}" class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                {% if product.is_verified %}
+                <div class="verified-badge">✓ Verified</div>
+                {% endif %}
+                <div class="product-info">
+                    <div class="product-name">{{ product.name }}</div>
+                    <div class="product-price">KES {{ product.price }}/{{ product.unit }}</div>
+                    <div class="product-seller">by {{ product.seller.username }}</div>
+                </div>
+            </a>
+            {% empty %}
+            <p style="grid-column: 1/-1; text-align: center; color: #666;">No products available yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="{% url 'home' %}" class="nav-item active">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-label">Home</div>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">📊</div>
+            <div class="nav-label">Advisories</div>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">🛒</div>
+            <div class="nav-label">Cart</div>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">📷</div>
+            <div class="nav-label">Scan QR</div>
+        </a>
+        <a href="{% url 'profile' %}" class="nav-item">
+            <div class="nav-icon">👤</div>
+            <div class="nav-label">Account</div>
+        </a>
     </div>
 </body>
 </html>

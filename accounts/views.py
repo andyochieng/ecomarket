@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .models import User
 from django.contrib.auth.decorators import login_required
+from products.models import Category, Product
 
 def signup_view(request):
     if request.method == 'POST':
@@ -59,4 +60,19 @@ def logout_view(request):
 
 @login_required
 def home_view(request):
-    return render(request, 'home.html')
+    categories = Category.objects.all()
+    featured_products = Product.objects.filter(is_featured=True)[:6]
+
+    
+    context = {
+        'categories': categories,
+        'featured_products': featured_products,
+    }
+    return render(request, 'home.html', context)
+    
+
+
+
+@login_required
+def profile_view(request):
+    return render(request, 'accounts/profile.html')
